@@ -20,15 +20,6 @@ def chat_with_csv(df, prompt):
 
     return result
 
-def display_conversation_history():
-    if conversation_history:
-        st.header("Conversation History")
-        for user_prompt, ai_response in conversation_history:
-            # Separate user queries and AI responses for clarity
-            st.write(f"**You:** {user_prompt}")
-            st.write(f"**Me:** {ai_response}")
-    else:
-        st.info("No conversation history yet.")
 
 st.set_page_config(layout="wide")
 
@@ -53,8 +44,7 @@ if input_csv is not None:
         chat_container = st.container()
         
 
-        # Display chat messages from history on app rerun
-# Display chat messages
+
         with input_container:
             prompt = st.text_input("Ask a question about your data:")
             if prompt:
@@ -80,9 +70,8 @@ if input_csv is not None:
       
         
            
-                
-                # Add assistant response to chat history
+              
                 st.session_state.messages.append({"role": "assistant", "content": response})
-            # display_conversation_history()
+           
 else:
     st.info("Please upload a CSV file to start chatting.")
